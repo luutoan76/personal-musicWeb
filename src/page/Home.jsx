@@ -22,7 +22,6 @@ function Home() {
   
   const[weeklySong, setWeeklySong] = useState([])
   const[keyword, setKeyWord] = useState("")
-  //const[songPlayer, setSongPlayer] = useState(null)
 
   const { setCurrentSong, setIsPlaying } = useContext(SongContext);
 
@@ -82,7 +81,6 @@ function Home() {
       const res = await fetch(`http://localhost:5062/api/Song/${id}`)
       if(res.ok){
         const data = await res.json();
-        //setSongPlayer(data)
         setCurrentSong(data);
         setIsPlaying(false);
         console.log(data)
@@ -462,11 +460,6 @@ function Home() {
 
       </main>
 
-      {/* ===== MUSIC PLAYER ===== */}
-      
-      {/*songPlayer && (
-        <SongPlayer item={songPlayer} />
-      )*/}
     </div>
       
     </>

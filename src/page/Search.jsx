@@ -37,8 +37,11 @@ function Search(){
 
     function handlelogout() {
         localStorage.removeItem("user");
-        setUser(null);
         navigate("/Login");
+    }
+
+    const toggleOpen = () => {
+        setOpen(!open);
     }
 
 
@@ -124,15 +127,15 @@ function Search(){
 
                     <div className="nav-buttons">
                         {user  ? (
-                            <div className="user-section" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+                            <div className="user-profile" onClick={toggleOpen}>
                                 <FaRegUserCircle size={22} />
                                 <span className="username">{user.name}</span>
                                 {open && (
                                 <>
-                                <div className='dropdown-menu'>
-                                    <button className="dropdown-item">Profile</button>
-                                    <button className="dropdown-item logout" onClick={handlelogout}>
-                                        Logout
+                                <div className='dropdown-profile'>
+                                    <button className="item-dropdown">Profile</button>
+                                    <button className="item-dropdown logout" onClick={(e) => {e.stopPropagation(); handlelogout();}}>
+                                    Logout
                                     </button>
                                 </div>
                                 </>
@@ -148,7 +151,7 @@ function Search(){
                     </div>
                 </div>
 
-                {/* NAV BAR RIGHT */}
+                {/* SONG PLAYLIST  */}
                 <div className="weekly-top">
                     <h1>Search Result For "{keyword}"</h1>
                     <h2><span className="highlight">Song</span></h2>

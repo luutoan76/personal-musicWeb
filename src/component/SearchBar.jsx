@@ -20,12 +20,8 @@ function SearchBar({keyword, onSubmit}){
     const[open , setOpen] = useState (false);
     const navigate = useNavigate();
 
-    const location = useLocation();
-    const firstKeyword = location.state?.keyword || ""
-    const[keyword, setKeyWord] = useState(firstKeyword)
+    const[keyword, setKeyWord] = useState()
 
-    const[song, setSong] = useState([])
-    const[songPlayer, setSongPlayer] = useState(null)
     
 
     const goToLogin = () => {

@@ -25,6 +25,7 @@
   padding: 0 40px;
   color: white;
   font-family: "Poppins", sans-serif;
+  margin: 20px 0;
 }
 
 .search-box {
@@ -68,8 +69,6 @@
 
 .nav-buttons {
   display: flex;
-  align-items: center;
-  gap: 15px;
 }
 
 .btn-outline {
@@ -102,21 +101,22 @@
 }
 
 
-.user-section {
+.user-profile {
   display: flex;
   align-items: center;
   flex-direction: column;
   cursor: pointer;
 
   transition: 0.3s;
+  position: relative;
 }
 
-.user-section:hover .dropdown-menu{
+.user-section:hover{
   color: #ff4bd1;
   transform: translateY(-2px);
 }
 
-.dropdown-menu {
+.dropdown-profile {
   position: absolute;
   top: 110%;
   right: center;
@@ -125,11 +125,12 @@
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+  min-width: 130px;
   overflow: hidden;
-  z-index: 10;
+  z-index: 100;
 }
 
-.dropdown-item {
+.item-dropdown {
   background: transparent;
   border: none;
   color: #fff;
@@ -139,7 +140,7 @@
   transition: 0.2s;
 }
 
-.dropdown-item:hover {
+.item-dropdown:hover {
   background: rgba(210, 119, 255, 0.15);
   color: #d277ff;
 }
