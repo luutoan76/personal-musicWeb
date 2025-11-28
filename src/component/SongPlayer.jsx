@@ -93,6 +93,15 @@ function SongPlayer(){
         setIsPlaying(false)
     }, [])
 
+    async function addToPlayList(songId) {
+        try{
+            const res = await fetch(`http://localhost:5062/api/Playlist/addSong?playlistID=6926cf20201b77ad4acf9a5a&songId=${songId}`)
+        }catch(error){
+            console.log("Error" + error)
+        }
+        
+    }
+
     if (!currentSong) return null;
     return(
         <>

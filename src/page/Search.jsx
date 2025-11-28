@@ -15,6 +15,7 @@ import { SongContext } from '../SongContext';
 import logo from '../assets/react.svg'
 import thumpnail from '../assets/thumpnail.png'
 import song1 from '../assets/song1.png'
+import Footer from '../component/Footer.jsx';
 
 function Search(){
     const [user, setUser] = useState(null);
@@ -236,6 +237,8 @@ function Search(){
                         </div>
                     </div>
                 </div>
+
+                <Footer></Footer>
 
             </main>
             

@@ -1,6 +1,6 @@
 import { useRef,useEffect,useState } from 'react'
-import { useNavigate, useLocation } from "react-router-dom";
-import './css/SearchBar.css'
+import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import style from './SearchBar.module.css'
 import { FaFacebookF, FaInstagram, FaTwitter, FaPlayCircle,FaPauseCircle, FaStepForward, FaStepBackward, FaUserPlus
   ,FaRegHeart,FaRegUserCircle ,FaSearch,FaHome, FaClock, FaHeart, FaListUl, FaPlusSquare, FaCog, FaSignOutAlt, FaCompactDisc, FaUserAlt } from "react-icons/fa";
 import { CiRepeat, CiShuffle } from "react-icons/ci";
@@ -15,17 +15,20 @@ import logo from '../assets/react.svg'
 import thumpnail from '../assets/thumpnail.png'
 import song1 from '../assets/song1.png'
 
-function SearchBar({keyword, onSubmit}){
+function SearchBar(){
     const [user, setUser] = useState(null);
     const[open , setOpen] = useState (false);
     const navigate = useNavigate();
 
-    const[keyword, setKeyWord] = useState()
+    const[keyword, setKeyWord] = useState("")
 
     
 
     const goToLogin = () => {
         navigate("/Login");
+    }
+    const goToProfile = () => {
+        navigate("/Profile");
     }
 
     function handlelogout() {
@@ -43,26 +46,22 @@ function SearchBar({keyword, onSubmit}){
         
         
     }, [])
-
+    const toggleOpen = () => {
+        setOpen(!open);
+    }
     const handleSearch = (e) => {
         e.preventDefault();
         navigate('/Search' , {
-        state: {keyword : keyword}
+            state: {keyword : keyword}
         })
     }
 
-    
-    
-   
-
-    
-
     return(
         <>
-                <div className="navbar">
+                <div className={style["navbar"]}>
                     <form onSubmit={handleSearch}>
-                         <div className="search-box">
-                            <FaSearch className="search-icon" />
+                         <div className={style["search-box"]}>
+                            <FaSearch className={style["search-icon"]} />
                             <input type="text" placeholder="Search For Musics, Artists, ..." value={keyword} onChange={(e) => setKeyWord(e.target.value)}/>
                         </div>
                     </form>
@@ -76,14 +75,15 @@ function SearchBar({keyword, onSubmit}){
 
                     <div className="nav-buttons">
                         {user  ? (
-                            <div className="user-section" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+                            <div className="user-profile" onClick={toggleOpen}>
                                 <FaRegUserCircle size={22} />
                                 <span className="username">{user.name}</span>
                                 {open && (
                                 <>
-                                <div className='dropdown-menu'>
-                                    <button className="dropdown-item">Profile</button>
-                                    <button className="dropdown-item logout" onClick={handlelogout}>
+                                <div className='dropdown-profile'>
+                                    
+                                    <button className="item-dropdown" onClick={goToProfile}>Profile</button>
+                                    <button className="item-dropdown logout" onClick={(e) => {e.stopPropagation(); handlelogout();}}>
                                     Logout
                                     </button>
                                 </div>

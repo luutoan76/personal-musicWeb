@@ -1,0 +1,157 @@
+
+/* USER INFO */
+
+.profile-container{
+    padding: 40px;
+    font-family: Arial;
+    color: white;
+    margin: 0;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.profile-username {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+
+.follow-info {
+  margin-top: 5px;
+  color: #b4b4b4;
+  font-size: 15px;
+  display: flex;
+  gap: 20px;
+}
+
+/* TOP CARDS */
+
+.top-playlists {
+  display: flex;
+  gap: 60px;
+  margin-top: 25px;
+}
+
+.top-card {
+  background: rgba(255,255,255,0.08);
+  padding: 20px;
+  border-radius: 12px;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.top-card:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-5px); 
+}
+
+.icon-profile {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pink {
+  background: #ff5298;
+}
+
+.blue {
+  background: #0b73ff;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.sub {
+  color: #b4b4b4;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+/* PLAYLIST CREATED */
+.playlist-header {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.add-btn {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid white;
+  color: white;
+  background: #222;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+    border: 2px solid #ff5298;
+    color: #ff5298;
+}
+
+.playlist-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 180px);
+  gap: 25px;
+}
+
+.playlist-item {
+  width: 180px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.playlist-item:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); 
+  background: #222;
+}
+
+
+.thumb {
+  width: 180px;
+  height: 180px;
+  background: #3a3a3a;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #676767;
+  font-size: 50px;
+}
+
+.playlist-name {
+  margin-top: 10px;
+  font-size: 18px;
+}

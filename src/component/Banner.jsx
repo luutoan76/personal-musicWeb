@@ -1,5 +1,5 @@
 import { useRef,useEffect,useState } from 'react'
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import './Banner.css'
 import { FaFacebookF, FaInstagram, FaTwitter, FaPlayCircle,FaPauseCircle, FaStepForward, FaStepBackward, FaUserPlus
   ,FaRegHeart,FaRegUserCircle ,FaSearch,FaHome, FaClock, FaHeart, FaListUl, FaPlusSquare, FaCog, FaSignOutAlt, FaCompactDisc, FaUserAlt } from "react-icons/fa";
@@ -14,7 +14,7 @@ import thumpnail from '../assets/thumpnail.png'
 import song1 from '../assets/song1.png'
 
 function Banner(){
-    
+  
     return(
         <>
             <div className="sidebar">
@@ -25,8 +25,9 @@ function Banner(){
             
                     <div className="section">
                       <p className="section-title">Menu</p>
-                      <button className="menu-item "><FaHome /><span>Home</span></button>
-                      <button className="menu-item" ><FaCompactDisc /><span>Discover</span></button>
+                      <NavLink to="/" className={({isActive}) => isActive ? "menu-item active" : "menu-item"}><FaHome /><span>Home</span></NavLink>
+                      <NavLink to="/Discover" className={({isActive}) => isActive ? "menu-item active" : "menu-item"}><FaCompactDisc /><span>Discover</span></NavLink>
+
                       <button className="menu-item"><FaListUl /><span>Albums</span></button>
                       <button className="menu-item"><FaUserAlt /><span>Artists</span></button>
                     </div>
@@ -40,7 +41,8 @@ function Banner(){
                     <div className="section">
                       <p className="section-title">Playlist and favorite</p>
                       <button className="menu-item"><FaHeart /><span>Your favorites</span></button>
-                      <button className="menu-item"><FaListUl /><span>Your playlist</span></button>
+                      <NavLink to="/Playlist" className={({isActive}) => isActive ? "menu-item active" : "menu-item"}><FaListUl /><span>Your Playlist</span></NavLink>
+
                       <button className="menu-item add"><FaPlusSquare /><span>Add playlist</span></button>
                     </div>
             

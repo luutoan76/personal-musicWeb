@@ -5,7 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px;
+  padding: 0 50px;
+  margin: 20px 0;
   color: white;
   font-family: "Poppins", sans-serif;
 }
@@ -85,16 +86,49 @@
 }
 
 
-.user-section {
+.user-profile {
   display: flex;
   align-items: center;
   flex-direction: column;
   cursor: pointer;
 
   transition: 0.3s;
+  position: relative;
 }
 
-.user-section:hover{
+.user-profile:hover{
   color: #ff4bd1;
-  transform: translateY(-2px);
+}
+
+.dropdown-profile {
+  position: absolute;
+  top: 110%;
+  right: center;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  min-width: 130px;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.item-dropdown {
+  background: transparent;
+  border: none;
+  color: #fff;
+  text-align: left;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.item-dropdown:hover {
+  background: rgba(210, 119, 255, 0.15);
+  color: #d277ff;
+}
+
+.logout:hover {
+  color: #ff6b6b;
 }

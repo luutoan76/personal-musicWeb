@@ -111,9 +111,8 @@
   position: relative;
 }
 
-.user-section:hover{
+.user-profile:hover{
   color: #ff4bd1;
-  transform: translateY(-2px);
 }
 
 .dropdown-profile {

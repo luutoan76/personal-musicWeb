@@ -13,6 +13,8 @@ import logo from '../assets/react.svg'
 import thumpnail from '../assets/thumpnail.png'
 import song1 from '../assets/song1.png'
 import SongPlayer from '../component/SongPlayer';
+import Banner from '../component/Banner';
+import Footer from '../component/Footer';
 
 
 function Home() {
@@ -120,40 +122,7 @@ function Home() {
   return (
     <>
     <div className="home-container">
-
-      <div className="sidebar">
-        <div className='logo-container'>
-          <img src={logo} className="logo"></img>
-        </div>
-        
-
-        <div className="section">
-          <p className="section-title">Menu</p>
-          <button className="menu-item active"><FaHome /><span>Home</span></button>
-          <button className="menu-item" ><FaCompactDisc /><span>Discover</span></button>
-          <button className="menu-item"><FaListUl /><span>Albums</span></button>
-          <button className="menu-item"><FaUserAlt /><span>Artists</span></button>
-        </div>
-
-        <div className="section">
-          <p className="section-title">Library</p>
-          <button className="menu-item"><FaClock /><span>Recently Added</span></button>
-          <button className="menu-item"><FaCompactDisc /><span>Most played</span></button>
-        </div>
-
-        <div className="section">
-          <p className="section-title">Playlist and favorite</p>
-          <button className="menu-item"><FaHeart /><span>Your favorites</span></button>
-          <button className="menu-item"><FaListUl /><span>Your playlist</span></button>
-          <button className="menu-item add"><FaPlusSquare /><span>Add playlist</span></button>
-        </div>
-
-        <div className="section">
-          <p className="section-title">General</p>
-          <button className="menu-item"><FaCog /><span>Setting</span></button>
-          <button className="menu-item logout" onClick={handlelogout}><FaSignOutAlt /><span>Logout</span></button>
-        </div>
-      </div>
+      <Banner></Banner>
 
       {/* ===== MAIN CONTENT ===== */}
       <main className="main-content">
@@ -405,59 +374,9 @@ function Home() {
         </div>
 
         {/* ===== Footer ===== */}
-        <footer class="footer">
-          <div class="footer-container">
-            <div class="footer-about">
-              <h3>About</h3>
-              <p>
-                Melodies is a website that has been created for over
-                <span class="highlight"> 5 year's</span> now and it is one of the most
-                famous music player website’s in the world. In this website you can
-                listen and download songs for free. Also if you want no limitation you
-                can buy our <span class="highlight">premium pass’s.</span>
-              </p>
-            </div>
-
-            <div class="footer-links">
-              <div class="footer-column">
-                <h3>Melodies</h3>
-                <hr />
-                <a href="#">Songs</a>
-                <a href="#">Radio</a>
-                <a href="#">Podcast</a>
-              </div>
-
-              <div class="footer-column">
-                <h3>Access</h3>
-                <hr />
-                <a href="#">Explor</a>
-                <a href="#">Artists</a>
-                <a href="#">Playlists</a>
-                <a href="#">Albums</a>
-                <a href="#">Trending</a>
-              </div>
-
-              <div class="footer-column">
-                <h3>Contact</h3>
-                <hr />
-                <a href="#">About</a>
-                <a href="#">Policy</a>
-                <a href="#">Social Media</a>
-                <a href="#">Soppurt</a>
-              </div>
-            </div>
-
-            <div class="footer-right">
-              <h2 class="brand">Melodies</h2>
-              <div class="social-icons">
-                <FaFacebookF className='footer-icon'></FaFacebookF>
-                <FaInstagram className='footer-icon'></FaInstagram>
-                <FaTwitter className='footer-icon'></FaTwitter>
-              </div>
-            </div>
-          </div>
-        </footer>
-
+        <Footer>
+          
+        </Footer>
       </main>
 
     </div>

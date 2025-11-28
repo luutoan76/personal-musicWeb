@@ -10,6 +10,10 @@ import Login from './page/Login'
 import Search from './page/Search'
 import { SongProvider } from "./SongContext";
 import SongPlayer from './component/SongPlayer'
+import Discover from './page/Discover'
+import Playlist from './page/Playlist'
+import Profile from './page/Profile'
+import PlaylistDetail from './page/PlaylistDetail'
 
 
 function App() {
@@ -23,6 +27,10 @@ function App() {
           <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Search" element={<Search />} />
+          <Route path="/Discover" element={<Discover />} />
+          <Route path="/Playlist" element={<Playlist />} />
+          <Route path='/Profile' element={<Profile />} />
+          <Route path='/PlayListDetail' element={<PlaylistDetail />} />
         </Routes>
             
         {showPlayer && <SongPlayer></SongPlayer>}

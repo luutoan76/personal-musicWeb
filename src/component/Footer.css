@@ -1,0 +1,104 @@
+
+.footer {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 50px;
+  font-family: "Poppins", sans-serif;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 2.5fr 3fr 1.5fr;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.footer-about h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-about p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #d1d1d1;
+}
+
+.footer-about .highlight {
+  color: #d939d9;
+  font-weight: bold;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-column h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-column hr {
+  width: 60%;
+  height: 2px;
+  border: none;
+  background-color: #e1e1e1;
+  margin-bottom: 10px;
+}
+
+.footer-column a {
+  display: block;
+  color: #e1e1e1;
+  text-decoration: none;
+  margin: 6px 0;
+  font-size: 0.95rem;
+  transition: 0.2s;
+}
+
+.footer-column a:hover {
+  color: #e245c0;
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-right .brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #d939d9, #5b6de7);
+  
+}
+
+.social-icons {
+  display: flex;
+  gap: 25px;
+  font-size: 1.3rem;
+}
+
+.social-icons i {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.social-icons i:hover {
+  color: #e245c0;
+}
+
+.footer-icon{
+  cursor: pointer;
+  transition: 0.2s;
+  width: 20px;
+  height: 20px;
+}
+.footer-icon:hover {
+  color: #e245c0;
+}
