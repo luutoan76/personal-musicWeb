@@ -85,7 +85,6 @@ function Home() {
         const data = await res.json();
         setCurrentSong(data);
         setIsPlaying(false);
-        console.log(data)
       }else{
         const errorText = await res.json();
         console.log(errorText)
@@ -156,7 +155,7 @@ function Home() {
                     {open && (
                       <>
                       <div className='dropdown-menu'>
-                        <button className="dropdown-item">Profile</button>
+                        <button className="dropdown-item" onClick={() => navigate("/Profile")}>Profile</button>
                         <button className="dropdown-item logout" onClick={handlelogout}>
                           Logout
                         </button>

@@ -50,7 +50,7 @@
   color: #e754c3;
 }
 
-.nav-buttons {
+.nav-buttons-component {
   display: flex;
   align-items: center;
   gap: 15px;

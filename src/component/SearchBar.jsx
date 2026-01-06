@@ -73,7 +73,7 @@ function SearchBar(){
                         <a href="#">Premium</a>
                     </div>
 
-                    <div className="nav-buttons">
+                    <div className={style["nav-buttons-component"]}>
                         {user  ? (
                             <div className="user-profile" onClick={toggleOpen}>
                                 <FaRegUserCircle size={22} />

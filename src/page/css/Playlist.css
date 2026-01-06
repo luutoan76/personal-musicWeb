@@ -68,7 +68,93 @@
 }
 
 
-/* ==== PLAYLIST  */
+.auth-buttons-profileDetail {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-primary {
+  background: #e83dc0;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: #c52ea5;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #ff4bd1;
+  border: 1px solid #ff4bd1;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-outline:hover {
+  background: #ff4bd1;
+  color: #fff;
+}
+
+
+.user-section-profileDetail {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.user-section-profileDetail:hover{
+  color: #ff4bd1;
+  transform: translateY(-2px);
+}
+
+.dropdown-menu-profileDetail {
+  position: absolute;
+  top: 110%;
+  right: center;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  min-width: 130px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.dropdown-item-profileDetail {
+  background: transparent;
+  border: none;
+  color: #fff;
+  text-align: left;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.dropdown-item-profileDetail:hover {
+  background: rgba(210, 119, 255, 0.15);
+  color: #d277ff;
+}
+
+.logout:hover {
+  color: #ff6b6b;
+}
+
+
+
+/* ==== PLAYLIST ===== */
 
 
 .playlist-content {
@@ -168,7 +254,7 @@
 /* Header */
 .table-header {
   display: grid;
-  grid-template-columns: 40px 1.5fr 1fr 1.2fr 120px;
+  grid-template-columns: 40px 2fr 1fr 1.2fr 120px;
   padding: 12px 0;
   opacity: 0.8;
   text-align: left;
@@ -178,7 +264,7 @@
 
 .song-row {
   display: grid;
-  grid-template-columns: 40px 1.5fr 1fr 1.2fr 120px;
+  grid-template-columns: 40px 2fr 1fr 1.2fr 120px;
   cursor: pointer;
   padding: 14px 10px;
   align-items: center;

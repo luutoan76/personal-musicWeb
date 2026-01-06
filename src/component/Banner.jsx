@@ -14,7 +14,6 @@ import thumpnail from '../assets/thumpnail.png'
 import song1 from '../assets/song1.png'
 
 function Banner(){
-  
     return(
         <>
             <div className="sidebar">

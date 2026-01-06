@@ -1,0 +1,120 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  width: 420px;
+  background: #121212;
+  color: white;
+  border-radius: 16px;
+  padding: 20px;
+  font-family: system-ui, sans-serif;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  font-size: 20px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: white;
+}
+
+.search-box-playlist input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: none;
+  background: #2a2a2a;
+  color: white;
+  outline: none;
+}
+
+.create-playlist {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.create-playlist:hover {
+  background: rgba(255,255,255,0.05);
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.icon-selectPlaylist {
+  width: 44px;
+  height: 44px;
+  background: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 22px;
+}
+
+.my-playlist {
+  font-size: 20px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.playlist-item-selectPlaylist {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.playlist-item-selectPlaylist:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.playlist-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.thumb {
+  width: 44px;
+  height: 44px;
+  background: #2a2a2a;
+  border-radius: 6px;
+}
+
+.add-toPlaylist {
+  background: none;
+  border: 1px solid #3a3a3a;
+  color: #3dd5f3;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background: rgba(61,213,243,0.1);
+}

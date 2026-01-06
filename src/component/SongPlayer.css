@@ -33,6 +33,12 @@
   transform: scale(1.1);
 }
 
+.icon.active {
+  color: #e245c0;
+  transform: scale(1.1);
+}
+
+
 .play {
   font-size: 28px;
 }

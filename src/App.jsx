@@ -14,6 +14,8 @@ import Discover from './page/Discover'
 import Playlist from './page/Playlist'
 import Profile from './page/Profile'
 import PlaylistDetail from './page/PlaylistDetail'
+import { PlaylistProvider } from './PlaylistContext'
+import PlaylistPlayer from './component/PlaylistPlayer'
 
 
 function App() {
@@ -34,7 +36,6 @@ function App() {
         </Routes>
             
         {showPlayer && <SongPlayer></SongPlayer>}
-         
         
       </>
     )

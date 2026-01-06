@@ -18,11 +18,13 @@ import SongPlayer from '../component/SongPlayer';
 import Banner from '../component/Banner';
 import SearchBar from '../component/SearchBar';
 import Footer from '../component/Footer';
+import AddPlaylist from '../component/addPlaylist';
 
 function Playlist(){
     const [user, setUser] = useState(null);
     const[playlist , setPlaylist] = useState([]);
     const navigate = useNavigate();
+    const [open , setOpen] = useState(false);
 
 
     
@@ -35,7 +37,7 @@ function Playlist(){
             fetchPlaylistByUserID(userData.id)
         }
         
-    }, [])
+    }, [playlist])
 
 
     const goToPlaylist = (id) => {
@@ -70,19 +72,21 @@ function Playlist(){
                 <SearchBar></SearchBar>
                 <div className='profile-container'>
                     <div class="playlist-header">
-                        <h2>Playlist đã tạo (1)</h2>
-                        <button className='add-btn'>+</button>
+                        <h2>Playlist đã tạo ({playlist.length})</h2>
+                        <button className='add-btn' onClick={() => setOpen(true)}>+</button>
                     </div>
                     
                     <div class="playlist-grid">
-                        {
-                            playlist.map((i) => (
-                                <div className="playlist-item" key={i.id} onClick={() =>goToPlaylist(i.id)}>
-                                    <img src={i.thumpnailImg} className='thumb' />
-                                    <p class="playlist-name">{i.name_playlist}</p>
-                                </div>
-                            ))
-                        }
+                        {playlist.map((i) => (
+                            <div
+                                className="playlist-item"
+                                key={i.id}
+                                onClick={() => goToPlaylist(i.id)}
+                            >
+                                <img src={i.thumpnailImg} className="thumb" />
+                                <p className="playlist-name">{i.name_playlist}</p>
+                            </div>
+                        ))}
                         
 
                         
@@ -92,6 +96,8 @@ function Playlist(){
                 
             </main>
         </div>
+
+        <AddPlaylist isOpen={open} onClose={() => setOpen(false)}></AddPlaylist>
         </>
     )
 }

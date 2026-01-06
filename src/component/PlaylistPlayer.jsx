@@ -14,27 +14,26 @@ import logo from '../assets/react.svg'
 import thumpnail from '../assets/thumpnail.png'
 import song1 from '../assets/song1.png'
 import { PlaylistContext } from '../PlaylistContext';
-import SelectPlaylist from './SelectPlaylist';
 
 
-function SongPlayer(){
-    //const { currentSong, setCurrentSong,isPlaying, setIsPlaying, audioRef } = useContext(SongContext);
+function PlaylistPlayer( ){
+    //const { currentSong } = useContext(SongContext);
     //const audioRef = useRef(null);
     const [progress, setProgress] = useState(0);
     const [duration,setDuration] = useState(0);
     const[currentTime, setCurrentTime] = useState(0);
     const[volume , setVolume] = useState(20)
     const [isReplay , setisReplay] = useState(false);
-    const[shuffle, setShuffle] = useState(false);
-    const [popUp , setPopUp] = useState(false);
-
-    // implement thu playlist player o dau neu ko dc hay xoa khoang nay
-    const { currentSong,setCurrentSong,isPlaying, setIsPlaying,audioRef , nextSong, prevSong, getRandomIndex } = useContext(SongContext);
-
-    //
+    const { playlist,currentSong,nextSong, isPlaying, setIsPlaying,audioRef } = useContext(PlaylistContext);
 
     const togglePlay = () => {
-        setIsPlaying((prev) => !prev)
+        
+        if(!isPlaying){
+            audioRef.current.play();
+        }else{
+            audioRef.current.pause();
+        }
+        setIsPlaying(!isPlaying)
     }
 
     const updateProgress = () => {
@@ -49,20 +48,17 @@ function SongPlayer(){
             audioRef.current.currentTime = 0;
             audioRef.current.play();
             return;
-        }
-        if(shuffle){
-            getRandomIndex()
-            setIsPlaying(true)
+        }else{
+            nextSong()
             return;
         }
-        nextSong()
-        setIsPlaying(true)
-        
     }
 
+    
 
     const toogleRepeat = () => {
         setisReplay(!isReplay);
+        console.log(isReplay)
     }
 
     const seeek = (event) => {
@@ -95,33 +91,34 @@ function SongPlayer(){
     }
 
     useEffect(()=> {
-        const audio = audioRef.current;
-        if(!audio){ return}
+        
+    }, [])
 
-        if(!currentSong){
-            audio.src = ""
-            setProgress(0)
-            setDuration(0)
-            setCurrentTime(0)
-            return;
+    async function addToPlayList(songId) {
+        try{
+            const res = await fetch(`http://localhost:5062/api/Playlist/addSong/playlistId/6926cf20201b77ad4acf9a5a/song/${songId}`, {
+                method: "POST",
+            })
+            if(res.ok){
+                const data = await res.text()
+                console.log("Song Added" + data)
+            }else{
+                const errorData = await res.text()
+                console.log("Failed added" + errorData)
+            }
+        }catch(error){
+            console.log("Error" + error)
         }
-        if(isPlaying){
-            audio.play()
-        }
-        else{
-            audio.pause()
-        }
-    }, [currentSong, audioRef, isPlaying])
+        
+    }
 
-    
-
-    if (!currentSong) return null;
+    if (!playlist.length) return null;
     return(
         <>
                 <div className='music-player'>
                 
                     <div className="controls-left">
-                        <FaStepBackward className="icon" onClick={() => prevSong()}/>
+                        <FaStepBackward className="icon" />
                         {
                             isPlaying ? (
                                 <FaPauseCircle className='icon pause' onClick={togglePlay}></FaPauseCircle>
@@ -129,8 +126,8 @@ function SongPlayer(){
                                 <FaPlayCircle className='icon play' onClick={togglePlay}></FaPlayCircle>
                             )
                             }
-                            <FaStepForward className="icon" onClick={() => nextSong()} />
-                            <CiShuffle className={`icon ${shuffle ? "active": ""}`} onClick={() => setShuffle((prev) => !prev)} />
+                            <FaStepForward className="icon" />
+                            <CiShuffle className="icon" />
                             {
                             isReplay ? (
                                 <TbRepeat className="icon" onClick={toogleRepeat}/>
@@ -145,7 +142,7 @@ function SongPlayer(){
                         <input type="range" min="0" max="100" value={progress || 0} onChange={seeek} />
                         <audio
                             ref={audioRef}
-                            src={currentSong.audioUrl}
+                            src={currentSong.audioUrl || ""}
                             onTimeUpdate={updateProgress}
                             onLoadedMetadata= {updateProgress}
                             onEnded={handleReplay}
@@ -179,13 +176,12 @@ function SongPlayer(){
 
                         <FaRegHeart className="icon" />
                         <FaUserPlus className="icon" />
-                        <MdOutlinePlaylistAdd className="icon" onClick={() => setPopUp(true)}/>
-                        
+                        <MdOutlinePlaylistAdd className="icon" onClick={() => addToPlayList(currentSong.id)}/>
                     </div>
                 </div>
-            <SelectPlaylist open={popUp} onClose={() => setPopUp(false)} songId={currentSong.id}/>
+            
         </>
     )
 }
 
-export default SongPlayer;
+export default PlaylistPlayer;

@@ -7,7 +7,7 @@ import { CiRepeat, CiShuffle } from "react-icons/ci";
 import { FaVolumeOff, FaVolumeLow, FaVolumeHigh, FaR, FaP } from "react-icons/fa6";
 import { MdOutlinePlaylistAdd } from "react-icons/md";
 import { TbRepeat, TbRepeatOff } from "react-icons/tb";
-import { IoIosArrowRoundBack } from "react-icons/io";
+import { IoIosArrowRoundBack,IoIosMore } from "react-icons/io";
 
 
 import { SongContext } from '../SongContext';
@@ -19,6 +19,7 @@ import Banner from '../component/Banner';
 import SearchBar from '../component/SearchBar';
 import Playlist from './Playlist';
 import Footer from '../component/Footer';
+import { PlaylistContext } from '../PlaylistContext';
 
 function PlaylistDetail(){
     const [user, setUser] = useState(null);
@@ -27,8 +28,8 @@ function PlaylistDetail(){
     const playlist = state?.playlist || [];
     const[song, setSong] = useState([]);
     const navigate = useNavigate();
-    const { setCurrentSong, setIsPlaying } = useContext(SongContext);
-
+    const { playAll, playSongAtIndex} = useContext(SongContext);
+    
 
     function handlelogout() {
         localStorage.removeItem("user");
@@ -63,22 +64,23 @@ function PlaylistDetail(){
             console.log("Network error:", error);
         }
     }
-
-    async function fetchSong(id) {
+    
+    async function deleteToPlayList(songId) {
         try{
-        const res = await fetch(`http://localhost:5062/api/Song/${id}`)
-        if(res.ok){
-            const data = await res.json();
-            setCurrentSong(data);
-            setIsPlaying(false);
-        }else{
-            const errorText = await res.json();
-            console.log(errorText)
+            const res = await fetch(`http://localhost:5062/api/Playlist/deleteSong/playlistId/6926cf20201b77ad4acf9a5a/song/${songId}`, {
+                method: "DELETE",
+            })
+            if(res.ok){
+                const data = await res.text()
+                setSong(prev => prev.filter(song => song.id !== songId));
+            }else{
+                const errorData = await res.text()
+                console.log("Failed deleted" + errorData)
+            }
+        }catch(error){
+            console.log("Error" + error)
         }
-
-        } catch(error){
-        console.log(error)
-        }   
+        
     }
 
     return(
@@ -97,14 +99,14 @@ function PlaylistDetail(){
                             <a href="#">Share</a>
                             <a href="#">About</a>
                             <a href="#">Premium</a>
-                            <div className="auth-buttons">
+                            <div className="auth-buttons-profileDetail">
                                 {user  ? (
-                                    <div className="user-section" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+                                    <div className="user-section-profileDetail" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
                                         <FaRegUserCircle size={22} />
                                         <span className="username">{user.name}</span>
                                         {open && (
                                         <>
-                                        <div className='dropdown-menu'>
+                                        <div className='dropdown-menu-profileDetail'>
                                             <button className="dropdown-item">Profile</button>
                                             <button className="dropdown-item logout" onClick={handlelogout}>
                                             Logout
@@ -136,7 +138,7 @@ function PlaylistDetail(){
                             </h1>
 
                             <p class="artists">
-                                tate mcree, nightmares, the neighborhood, doja cat and ...
+                                tate mcree, nightmares, the neighborhood, doja cat and ... {playlist.description}
                             </p>
 
                             <div class="meta">
@@ -146,9 +148,9 @@ function PlaylistDetail(){
                                     <span>1h 36m</span>
                                 </div>
                                 
-                                <div class="play-wrapper">
+                                <div class="play-wrapper" onClick={() => playAll(song)}>
                                     <FaPlayCircle className='play-icon'/> 
-                                    <span>Play All</span>
+                                    <span >Play All</span>
                                     
                                     
                                 </div>
@@ -173,11 +175,11 @@ function PlaylistDetail(){
                                 const info = playlist.song_playlist.find(s => s.songId === item.id)
 
                                 return(
-                                     <div className="song-row" key={index} onClick={() => fetchSong(item.id)}>
+                                     <div className="song-row" key={item.id} >
                                         <span className="index">{index}</span>
 
                                         <div className="song-info">
-                                            <img src={item.thumbnailUrl } />
+                                            <img src={item.thumbnailUrl }  onClick={() => playSongAtIndex(index, song)}/>
                                             <div className="text">
                                                 <p className="title">{item.title}</p>
                                                 <p className="artist">{item.artist}</p>
@@ -190,7 +192,7 @@ function PlaylistDetail(){
                                         <div className="time-wrap">
                                             <FaRegHeart className='heart'/>
                                             <span className="time">{item.duration}</span>
-                                            <i className="more">⋯</i>
+                                            <IoIosMore className="more" onClick={() => deleteToPlayList(item.id)}/>
                                         </div>
                                     </div>
                                 )
